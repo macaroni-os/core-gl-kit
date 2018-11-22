@@ -7,7 +7,7 @@ DESCRIPTION="X.Org Protocol ${proto} package stub ."
 
 KEYWORDS="*"
 
-SLOT="stub"
+SLOT="0/stub"
 
 RDEPEND="|| (
 	=x11-base/xorg-proto-2018.4-r2
