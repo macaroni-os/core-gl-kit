@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=NVIDIA container runtime library
+EAPI=6
+HOMEPAGE=https://github.com/NVIDIA/libnvidia-container
+KEYWORDS=*
+LICENSE=NVIDIA CORPORATION
+RDEPEND=net-libs/libtirpc sys-libs/libcap sys-libs/libseccomp
+SLOT=0
+SRC_URI=https://github.com/NVIDIA/libnvidia-container/releases/download/v1.0.0/libnvidia-container_1.0.0_x86_64.tar.xz -> nvidia-container-1.0.0.tar.xz
+_md5_=5a4380b8c29a7ddbc514ab1a0a5b2a8d
