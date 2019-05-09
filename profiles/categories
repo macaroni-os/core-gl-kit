@@ -1,2 +1,10 @@
+app-emulation
+app-eselect
+dev-libs
+dev-util
 media-libs
+media-video
+virtual
 x11-base
+x11-drivers
+x11-libs

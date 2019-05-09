@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Utility to change the OpenCL implementation being used
+EAPI=6
+HOMEPAGE=https://www.gentoo.org/
+KEYWORDS=amd64 ~arm64 x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2
+PDEPEND=>=dev-util/opencl-headers-20190412 >=dev-util/opencl-clhpp-20190207
+RDEPEND=>=app-admin/eselect-1.2.4
+SLOT=0
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=d555e9dd6e69ecf051f93b5b3ba96eb3
