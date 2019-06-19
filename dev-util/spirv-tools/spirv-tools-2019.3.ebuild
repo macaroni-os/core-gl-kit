@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit cmake-multilib cmake-utils
+PYTHON_COMPAT=( python3_{5,6,7} )
+
+inherit cmake-multilib cmake-utils python-any-r1
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/SPIRV-Tools.git"
@@ -26,7 +28,10 @@ SLOT="0"
 RESTRICT="test"
 
 RDEPEND=""
-DEPEND=">=dev-util/spirv-headers-1.3.7"
+DEPEND="
+	${PYTHON_DEPS}
+	>=dev-util/spirv-headers-1.4.1
+"
 
 multilib_src_configure() {
 	local mycmakeargs=(
