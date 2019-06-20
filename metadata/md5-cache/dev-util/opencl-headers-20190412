@@ -7,4 +7,4 @@ LICENSE=Apache-2.0
 RDEPEND=!<app-eselect/eselect-opencl-1.2.0
 SLOT=0
 SRC_URI=https://github.com/KhronosGroup/OpenCL-Headers/archive/745c724b4ac623b1c42044454cb867e537d3917e.tar.gz -> opencl-headers-20190412.tar.gz
-_md5_=28e99301ade8d879d423bf14409ef585
+_md5_=6ad6c40f4cde78d76a25453a884ade6b

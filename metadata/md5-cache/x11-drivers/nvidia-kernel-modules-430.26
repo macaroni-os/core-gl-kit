@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup test unpack
-DEPEND==x11-drivers/nvidia-drivers-430.14* kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf ) sys-apps/pciutils virtual/pkgconfig
+DEPEND==x11-drivers/nvidia-drivers-430.26* kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf ) sys-apps/pciutils virtual/pkgconfig
 DESCRIPTION=NVIDIA GPU Kernel Modules
 EAPI=6
 HOMEPAGE=http://www.nvidia.com/ http://www.nvidia.com/Download/Find.aspx
