@@ -340,9 +340,6 @@ src_prepare() {
 	fi
 	[[ ${PV} == 9999 ]] && eautoreconf
 
-	# Fix gl.pc.in when using libglvnd to always link using -lGL
-	use glvnd && sed -e 's/-l@GL_LIB@/-lGL/' -i src/mesa/gl.pc.in
-
 	eapply_user
 
 	export OLD_PATH="${PATH}"
@@ -579,7 +576,8 @@ multilib_src_install() {
 	# Cleanup files we shouldn't be installing when using libglvnd
 	if use glvnd ; then 
 		find "${ED}/usr/$(get_libdir)/" -name 'libGLESv[12]*.so*' -delete
-	#	find "${ED}/usr/$(get_libdir)/pkgconfig/" -name 'gl.pc' -delete
+		find "${ED}/usr/$(get_libdir)/pkgconfig/" -name 'gl.pc' -delete
+		find "${ED}/usr/$(get_libdir)/pkgconfig/" -name 'egl.pc' -delete
 	fi
 }
 

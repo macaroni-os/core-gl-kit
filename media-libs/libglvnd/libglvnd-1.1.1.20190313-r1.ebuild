@@ -6,8 +6,6 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-
-
 inherit autotools multilib-minimal python-any-r1
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
@@ -53,6 +51,10 @@ RDEPEND="
 	${RDEPEND}
 	!media-libs/mesa[-glvnd(-)]
 "
+
+PATCHES=(
+	"$FILESDIR"/0001-Add-pkgconfig-data-for-libraries-implemented-so-far.patch
+)
 
 src_unpack() {
 	default
