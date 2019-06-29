@@ -25,7 +25,7 @@ if [[ $PV == 9999 ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="*"
 fi
 
 LICENSE="MIT"
@@ -569,15 +569,13 @@ multilib_src_compile() {
 
 }
 
-
 multilib_src_install() {
 	meson_src_install DESTDIR="${D}"
 
-	# Cleanup files we shouldn't be installing when using libglvnd
 	if use glvnd ; then 
 		find "${ED}/usr/$(get_libdir)/" -name 'libGLESv[12]*.so*' -delete
-		find "${ED}/usr/$(get_libdir)/pkgconfig/" -name 'gl.pc' -delete
-		find "${ED}/usr/$(get_libdir)/pkgconfig/" -name 'egl.pc' -delete
+		mv "${ED}/usr/$(get_libdir)/pkgconfig/gl.pc" "${ED}/usr/$(get_libdir)/pkgconfig/mesa-gl.pc"
+		mv "${ED}/usr/$(get_libdir)/pkgconfig/egl.pc" "${ED}/usr/$(get_libdir)/pkgconfig/mesa-egl.pc"
 	fi
 }
 
