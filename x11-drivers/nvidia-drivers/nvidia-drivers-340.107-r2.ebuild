@@ -89,8 +89,6 @@ RDEPEND="
 	)
 "
 
-# Our kernel modules use the sources installed by this package, so this must be a post-depend
-PDEPEND="=x11-drivers/nvidia-kernel-modules-${PV}*"
 
 
 S="${WORKDIR}/"
