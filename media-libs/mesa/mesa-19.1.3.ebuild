@@ -99,7 +99,7 @@ REQUIRED_USE_APIS="
 "
 
 REQUIRED_USE="
-	d3d9?   ( video_cards_dri3 )
+	d3d9?	( video_cards_dri3 )
 	opencl? (
 		llvm
 		|| ( ${ALL_GALLIUM_CARDS} )
@@ -134,10 +134,10 @@ REQUIRED_USE="
 	wayland? ( egl gbm )
 	video_cards_gallium-swrast? ( llvm )
 	video_cards_gallium-swr? ( || ( ${IUSE_SWR_CPUFLAGS} ) )
-	video_cards_gallium-imx?    ( video_cards_gallium-vivante )
+	video_cards_gallium-imx?	( video_cards_gallium-vivante )
 	video_cards_gallium-tegra? ( video_cards_gallium-nouveau )
-	video_cards_gallium-r300?   ( x86? ( llvm ) amd64? ( llvm ) )
-	video_cards_gallium-radeonsi?   ( llvm egl? ( || ( drm surfaceless ) ) )
+	video_cards_gallium-r300?	( x86? ( llvm ) amd64? ( llvm ) )
+	video_cards_gallium-radeonsi?	( llvm egl? ( || ( drm surfaceless ) ) )
 	video_cards_gallium-pl111? ( video_cards_gallium-vc4 )
 	video_cards_gallium-virgl? ( egl? ( || ( drm surfaceless ) ) )
 	video_cards_gallium-vivante? ( gbm )
@@ -489,6 +489,23 @@ src_configure() {
 	# Note: egl is "auto" below because it only makes sense if you are building a DRI driver.
 	# Let mesa's meson script determine if it is relevant for our case.
 	# Many of the other "auto" options below are used in similar way.
+
+	if ! use video_cards_i915 && \
+	! use video_cards_i965 && \
+	! use video_cards_r100 && \
+	! use video_cards_r200 && \
+	! use video_cards_nouveau && \
+	! use video_cards_swrast; then
+		# mesa's meson logic tries to be too smart. We need to detect if we have any DRI cards. If not, 
+		# we need to automatically disable some other stuff or meson.build complains. It's always possible
+		# that we're asking mesa to build -- but we haven't selected any drivers!
+		glx_opt=disabled
+		glvnd_opt=false
+	else
+		glx_opt=auto
+		glvnd_opt=true
+	fi
+
 	local emesonargs=(
 		--prefix="${my_prefix}"
 		--libdir="${my_libdir}"
@@ -496,24 +513,24 @@ src_configure() {
 		-Ddri3=${enable_dri3}
 		-Ddri-drivers=${DRI_DRIVERS}
 		-Dgallium-drivers=${GALLIUM_DRIVERS}
-		-Dgallium-extra-hud=$(usex extra-hud true false)
+		-Dgallium-extra-hud=$(usex extra-hud auto false)
 		-Dgallium-vdpau=$(usex video_cards_vdpau auto false)
 		-Dgallium-xvmc=$(usex video_cards_xvmc auto false)
 		-Dgallium-omx=$(usex video_cards_openmax bellagio disabled)
 		-Dgallium-va=$(usex video_cards_vaapi auto false)
 		-Dgallium-xa=$(usex video_cards_xa auto false)
-		-Dgallium-nine=$(usex d3d9 true false)
+		-Dgallium-nine=$(usex d3d9 auto false)
 		-Dgallium-opencl=$(usex opencl $(usex ocl-icd icd standalone) disabled)
 		-Dvulkan-drivers=${VULKAN_DRIVERS}
-		-Dshader-cache=$(usex shader-cache true false)
+		-Dshader-cache=$(usex shader-cache auto false)
 		-Dshared-glapi=$(usex opengl true false)
-		-Dgles1=$(usex gles1 true false)
-		-Dgles2=$(usex gles2 true false)
+		-Dgles1=$(usex gles1 auto false)
+		-Dgles2=$(usex gles2 auto false)
 		-Dopengl=$(usex opengl true false)
-		-Dgbm=$(usex gbm true false)
-		-Dglx=$(usex glx dri disabled)
+		-Dgbm=$(usex gbm auto false)
+		-Dglx=$(usex glx $glx_opt disabled)
 		-Degl=$(usex egl auto false)
-		-Dglvnd=$(usex glvnd true false)
+		-Dglvnd=$(usex glvnd $glvnd_opt false)
 		-Dasm=$(if [[ "${ABI}" == "x86*" ]] ; then echo "false" ; else echo "true"; fi)
 		-Dglx-read-only-text=$(if [[ "${ABI}" == "x86" ]] && use pax_kernel ; then echo "true" ; else echo "false"; fi)
 		-Dllvm=$(usex llvm true false)
