@@ -486,7 +486,9 @@ src_configure() {
 	else
 		osmesa_enable="none"
 	fi
-	
+	# Note: egl is "auto" below because it only makes sense if you are building a DRI driver.
+	# Let mesa's meson script determine if it is relevant for our case.
+	# Many of the other "auto" options below are used in similar way.
 	local emesonargs=(
 		--prefix="${my_prefix}"
 		--libdir="${my_libdir}"
@@ -510,7 +512,7 @@ src_configure() {
 		-Dopengl=$(usex opengl true false)
 		-Dgbm=$(usex gbm true false)
 		-Dglx=$(usex glx dri disabled)
-		-Degl=$(usex egl true false)
+		-Degl=$(usex egl auto false)
 		-Dglvnd=$(usex glvnd true false)
 		-Dasm=$(if [[ "${ABI}" == "x86*" ]] ; then echo "false" ; else echo "true"; fi)
 		-Dglx-read-only-text=$(if [[ "${ABI}" == "x86" ]] && use pax_kernel ; then echo "true" ; else echo "false"; fi)
