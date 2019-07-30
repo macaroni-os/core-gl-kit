@@ -18,5 +18,5 @@ src_unpack() {
 
 src_install() {
 	dodir /usr/include
-	(cd ${D}/usr/include && tar xvf ${DISTDIR}/mesa-gl-headers-${PV}.tar.xz) || die "extract failed"
+	(cd ${D}/usr/include && tar xvf ${DISTDIR}/mesa-gl-headers-${PVR}.tar.xz) || die "extract failed"
 }
