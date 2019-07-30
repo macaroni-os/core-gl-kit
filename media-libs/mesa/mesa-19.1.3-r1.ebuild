@@ -593,6 +593,9 @@ src_install() {
 	fi
 	find "${ED}" -name '*.la' -delete
 	einstalldocs
+
+	# In Funtoo with libglvnd, we rely on media-libs/mesa-gl-headers to install our opengl headers.
+	rm -rf ${D}/usr/include || die "can't remove headers"
 }
 
 src_test() {
