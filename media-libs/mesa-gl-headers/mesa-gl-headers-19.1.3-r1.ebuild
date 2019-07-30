@@ -4,7 +4,7 @@ EAPI=7
 
 DESCRIPTION="Mesa's GL headers -- separated out to resolve circ. deps."
 HOMEPAGE="https://mesa3d.org"
-SRC_URI="https://fastpull-us.funtoo.org/distfiles/mesa-gl-headers-${PV}.tar.xz"
+SRC_URI="https://fastpull-us.funtoo.org/distfiles/mesa-gl-headers-${PVR}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
