@@ -238,19 +238,19 @@ LLVM_DEPSTR_AMDGPU="
 "
 CLANG_DEPSTR="
 	|| (
-		sys-devel/llvm:8[clang]
-		sys-devel/llvm:7[clang]
-		>=sys-devel/llvm-6.0.1-r1[clang]
+		sys-devel/llvm:8[clang(+)]
+		sys-devel/llvm:7[clang(+)]
+		>=sys-devel/llvm-6.0.1-r1[clang(+)]
 	)
 	sys-devel/llvm:i=[clang]
 "
 CLANG_DEPSTR_AMDGPU="
 	|| (
-		sys-devel/llvm:8[clang,llvm_targets_AMDGPU(-)]
-		sys-devel/llvm:7[clang,llvm_targets_AMDGPU(-)]
-		>=sys-devel/llvm-6.0.1-r1[clang,llvm_targets_AMDGPU(-)]
+		sys-devel/llvm:8[clang(+),llvm_targets_AMDGPU(-)]
+		sys-devel/llvm:7[clang(+),llvm_targets_AMDGPU(-)]
+		>=sys-devel/llvm-6.0.1-r1[clang(+),llvm_targets_AMDGPU(-)]
 	)
-	sys-devel/llvm:=[clang,llvm_targets_AMDGPU(-)]
+	sys-devel/llvm:=[clang(+),llvm_targets_AMDGPU(-)]
 "
 RDEPEND="${RDEPEND}
 	llvm? (
