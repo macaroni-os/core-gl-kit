@@ -11,6 +11,7 @@ SLOT="0"
 KEYWORDS="*"
 IUSE=""
 S="${WORKDIR}"
+RDEPEND="!<media-libs/mesa-19.1.3-r1"
 
 src_unpack() {
 	return
