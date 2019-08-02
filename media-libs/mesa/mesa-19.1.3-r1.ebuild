@@ -242,7 +242,7 @@ CLANG_DEPSTR="
 		sys-devel/llvm:7[clang(+)]
 		>=sys-devel/llvm-6.0.1-r1[clang(+)]
 	)
-	sys-devel/llvm:i=[clang]
+	sys-devel/llvm:=[clang(+)]
 "
 CLANG_DEPSTR_AMDGPU="
 	|| (
