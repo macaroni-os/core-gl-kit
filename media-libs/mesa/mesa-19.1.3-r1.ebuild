@@ -70,7 +70,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 	${IUSE_SWR_CPUFLAGS}
 	+gbm
 	+llvm +shader-cache
-	osmesa d3d9
+	d3d9
 	extra-hud sensors
 	pax_kernel pic selinux
 	debug unwind valgrind
