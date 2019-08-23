@@ -410,7 +410,7 @@ src_configure() {
 		dri_enable nouveau
 	fi
 	if use video_cards_gallium-nouveau; then
-		gallium_enable gallium-nouveau
+		gallium_enable nouveau
 		gallium_enable video_cards_gallium-tegra tegra
 		tool_enable nouveau
 	fi
