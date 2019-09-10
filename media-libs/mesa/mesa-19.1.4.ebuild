@@ -143,7 +143,6 @@ REQUIRED_USE="
 	video_cards_gallium-vivante? ( gbm )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.96"
 # keep blocks in rdepend for binpkg
 RDEPEND="
 	!<x11-base/xorg-server-1.7
@@ -204,12 +203,20 @@ RDEPEND="
 	video_cards_vdpau? ( >=x11-libs/libvdpau-1.1:= )
 	video_cards_xvmc? ( >=x11-libs/libXvMC-1.0.8:= )
 
-
-	video_cards_i915? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
+	>=x11-libs/libdrm-2.4.96
+	video_cards_gallium-radeonsi? ( x11-libs/libdrm[video_cards_radeon,video_cards_amdgpu] )
+	video_cards_r100? ( x11-libs/libdrm[video_cards_radeon] )
+	video_cards_r200? ( x11-libs/libdrm[video_cards_radeon] )
+	video_cards_gallium-r300? ( x11-libs/libdrm[video_cards_radeon] )
+	video_cards_gallium-r600? ( x11-libs/libdrm[video_cards_radeon] )
+	video_cards_amdgpu? ( x11-libs/libdrm[video_cards_radeon,video_cards_amdgpu] )
+	video_cards_vulkan-amdgpu? ( x11-libs/libdrm[video_cards_amdgpu] )
+	video_cards_gallium-nouveau? ( x11-libs/libdrm[video_cards_nouveau] )
+	video_cards_nouveau? ( x11-libs/libdrm[video_cards_nouveau] )
+	video_cards_gallium-i915? ( x11-libs/libdrm[video_cards_intel] )
+	video_cards_i915? ( x11-libs/libdrm[video_cards_intel] )
 "
-RDEPEND="${RDEPEND}
-	video_cards_gallium-radeonsi? ( ${LIBDRM_DEPSTRING}[video_cards_amdgpu] )
-"
+RDEPEND="${RDEPEND}"
 
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling one than more slot
