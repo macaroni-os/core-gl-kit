@@ -11,7 +11,7 @@ SRC_URI=""
 
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
-KEYWORDS="-* ~amd64 ~amd64-fbsd"
+KEYWORDS="-* amd64"
 RESTRICT="bindist"
 
 IUSE="kernel_FreeBSD kernel_linux"
@@ -30,7 +30,7 @@ NVDRIVERS_DIR="${EPREFIX}/opt/nvidia/nvidia-drivers-${PV}"
 S="${WORKDIR}/kernel-modules"
 
 # Maximum supported kernel version in form major.minor
-: "${NV_MAX_KERNEL_VERSION:=5.0}"
+: "${NV_MAX_KERNEL_VERSION:=5.4}"
 
 
 nvidia_drivers_versions_check() {
