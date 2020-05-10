@@ -1,16 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/mesa.git"
 
-if [[ ${PV} = 9999 ]]; then
-	GIT_ECLASS="git-r3"
-	EXPERIMENTAL="true"
-fi
-
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3+ )
 
 inherit meson eutils llvm python-any-r1 pax-utils ${GIT_ECLASS}
 
@@ -20,14 +14,8 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
-
-if [[ $PV == 9999 ]]; then
-	SRC_URI=""
-else
-	SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
-	KEYWORDS="*"
-fi
-
+SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
+KEYWORDS="*"
 LICENSE="MIT"
 SLOT="0"
 
@@ -143,7 +131,6 @@ REQUIRED_USE="
 	video_cards_gallium-vivante? ( gbm )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.96"
 # keep blocks in rdepend for binpkg
 RDEPEND="
 	!<x11-base/xorg-server-1.7
@@ -204,12 +191,20 @@ RDEPEND="
 	video_cards_vdpau? ( >=x11-libs/libvdpau-1.1:= )
 	video_cards_xvmc? ( >=x11-libs/libXvMC-1.0.8:= )
 
-
-	video_cards_i915? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
+	>=x11-libs/libdrm-2.4.96
+	video_cards_gallium-radeonsi? ( x11-libs/libdrm[video_cards_radeon,video_cards_amdgpu] )
+	video_cards_r100? ( x11-libs/libdrm[video_cards_radeon] )
+	video_cards_r200? ( x11-libs/libdrm[video_cards_radeon] )
+	video_cards_gallium-r300? ( x11-libs/libdrm[video_cards_radeon] )
+	video_cards_gallium-r600? ( x11-libs/libdrm[video_cards_radeon] )
+	video_cards_amdgpu? ( x11-libs/libdrm[video_cards_radeon,video_cards_amdgpu] )
+	video_cards_vulkan-amdgpu? ( x11-libs/libdrm[video_cards_amdgpu] )
+	video_cards_gallium-nouveau? ( x11-libs/libdrm[video_cards_nouveau] )
+	video_cards_nouveau? ( x11-libs/libdrm[video_cards_nouveau] )
+	video_cards_gallium-i915? ( x11-libs/libdrm[video_cards_intel] )
+	video_cards_i915? ( x11-libs/libdrm[video_cards_intel] )
 "
-RDEPEND="${RDEPEND}
-	video_cards_gallium-radeonsi? ( ${LIBDRM_DEPSTRING}[video_cards_amdgpu] )
-"
+RDEPEND="${RDEPEND}"
 
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling one than more slot
@@ -219,7 +214,7 @@ RDEPEND="${RDEPEND}
 # 1. List all the working slots (with min versions) in ||, newest first.
 # 2. Update the := to specify *max* version, e.g. < 7.
 # 3. Specify LLVM_MAX_SLOT, e.g. 6.
-LLVM_MAX_SLOT=8
+LLVM_MAX_SLOT=9
 LLVM_DEPSTR="
 	|| (
 		sys-devel/llvm:8
@@ -356,7 +351,6 @@ src_prepare() {
 	if [ -d "${FILESDIR}" ] && [ "$(cd "$FILESDIR" && echo "${P}"-*.patch)" != "${P}"'-*.patch' ] ; then
 		eapply "${FILESDIR}/${P}"-*.patch
 	fi
-	[[ ${PV} == 9999 ]] && eautoreconf
 
 	eapply_user
 
