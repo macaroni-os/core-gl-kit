@@ -3,6 +3,7 @@
 EAPI=7
 
 inherit autotools linux-info flag-o-matic python-single-r1
+PYTHON_COMPAT=( python2_7 )
 
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
