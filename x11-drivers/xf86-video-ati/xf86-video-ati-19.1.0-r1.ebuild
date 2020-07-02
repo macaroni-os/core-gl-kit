@@ -21,7 +21,10 @@ DEPEND="sys-kernel/linux-headers
 
 RDEPEND="
 	${DEPEND}x11-libs/libpciaccess
-	x11-libs/libdrm[video_cards_radeon] glamor? ( x11-base/xorg-server[glamor] ) udev? ( virtual/libudev:= )
+	x11-libs/libdrm[video_cards_radeon]
+glamor? ( x11-base/xorg-server[glamor] )
+udev? ( virtual/libudev:= )
+
 "
 
 WANT_AUTOCONF="latest"
