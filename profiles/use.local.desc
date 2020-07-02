@@ -50,10 +50,6 @@ x11-libs/libXfont2:bzip2 - Support bzip2 compressed PCF fonts.
 x11-libs/libXfont2:truetype - Use media-libs/freetype for font rasterization.
 x11-libs/libdrm:libkms - Enable building of libkms, a library for applications to interface with KMS
 x11-libs/libdrm:valgrind - Compile in valgrind memory hints
-x11-libs/libva:drm - Enables VA/DRM API support.
-x11-libs/libva:egl - Enables EGL support.
-x11-libs/libva:utils - Install VA-API utility programs.
-x11-libs/libva-intel-driver:drm - Enables VA/DRM API support.
 x11-libs/libxcb:xkb - Enable the XCB keyboard extension
 x11-libs/pixman:loongson2f - Enable Loongson2f MMI optimizations.
 x11-misc/bumblebee:bbswitch - Add dependency on sys-power/bbswitch for PM feature
