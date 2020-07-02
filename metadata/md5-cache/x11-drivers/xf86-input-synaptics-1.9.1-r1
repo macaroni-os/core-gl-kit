@@ -9,4 +9,4 @@ RDEPEND=sys-kernel/linux-headers x11-base/xorg-proto >=sys-devel/libtool-2.2.6a 
 SLOT=0
 SRC_URI=https://gitlab.freedesktop.org/xorg/driver/xf86-input-synaptics/-/archive/xf86-input-synaptics-1.9.1/xf86-input-synaptics-xf86-input-synaptics-1.9.1.tar.bz2 -> xf86-input-synaptics-1.9.1-gitlab.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=cbd9d75855786ff639fb83f29f3c1ab6
+_md5_=c6b6cc1bd2654440f53c32367974391f

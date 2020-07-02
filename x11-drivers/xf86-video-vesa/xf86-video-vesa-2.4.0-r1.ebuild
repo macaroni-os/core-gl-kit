@@ -37,8 +37,8 @@ src_configure() {
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
 pkg_pretend() {
-	CONFIG_CHECK="~D ~E ~V ~M ~E ~M ~
- "
+	CONFIG_CHECK="DEVMEM
+"
 	check_extra_config
 }
 

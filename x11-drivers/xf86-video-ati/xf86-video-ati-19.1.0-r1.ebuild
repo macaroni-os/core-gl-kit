@@ -42,9 +42,9 @@ $(use_enable udev)
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
 pkg_pretend() {
-	CONFIG_CHECK="~! ~D ~R ~M ~_ ~R ~A ~D ~E ~O ~N ~_ ~U ~M ~S ~
- ~! ~F ~B ~_ ~R ~A ~D ~E ~O ~N ~
- "
+	CONFIG_CHECK="!DRM_RADEON_UMS
+!FB_RADEON
+"
 	check_extra_config
 }
 

@@ -41,7 +41,7 @@ src_configure() {
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
 pkg_pretend() {
-	CONFIG_CHECK="~INPUT_EVDEV "
+	CONFIG_CHECK="['INPUT_EVDEV']"
 	check_extra_config
 }
 
