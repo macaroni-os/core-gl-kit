@@ -32,18 +32,23 @@ WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
 
-src_configure() {
-	XORG_CONFIGURE_OPTIONS=(
-		
-	)
+pkg_setup() {
 	append-ldflags -Wl,-z,lazy
+}
+src_prepare() {
 	eautoreconf || die
-	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
+	default
 }
 pkg_pretend() {
-	CONFIG_CHECK="['INPUT_EVDEV']"
+	CONFIG_CHECK="~INPUT_EVDEV "
 	check_extra_config
 }
+
+pkg_postinst() {
+	CONFIG_CHECK="~INPUT_EVDEV "
+	check_extra_config
+}
+
 
 src_install() {
 	default

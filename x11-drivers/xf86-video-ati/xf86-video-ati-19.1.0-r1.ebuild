@@ -31,22 +31,31 @@ WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
 
+pkg_setup() {
+	append-ldflags -Wl,-z,lazy
+}
+src_prepare() {
+	eautoreconf || die
+	default
+}
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable glamor)
 $(use_enable udev)
 
 	)
-	append-ldflags -Wl,-z,lazy
-	eautoreconf || die
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
 pkg_pretend() {
-	CONFIG_CHECK="!DRM_RADEON_UMS
-!FB_RADEON
-"
+	CONFIG_CHECK="~!DRM_RADEON_UMS ~!FB_RADEON "
 	check_extra_config
 }
+
+pkg_postinst() {
+	CONFIG_CHECK="~!DRM_RADEON_UMS ~!FB_RADEON "
+	check_extra_config
+}
+
 
 src_install() {
 	default

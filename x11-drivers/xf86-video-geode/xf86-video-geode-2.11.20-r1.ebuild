@@ -29,15 +29,21 @@ WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
 
+pkg_setup() {
+	append-ldflags -Wl,-z,lazy
+}
+src_prepare() {
+	eautoreconf || die
+	default
+}
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ztv)
 
 	)
-	append-ldflags -Wl,-z,lazy
-	eautoreconf || die
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
+
 
 src_install() {
 	default

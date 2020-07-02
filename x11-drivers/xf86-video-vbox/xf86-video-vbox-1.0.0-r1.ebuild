@@ -29,14 +29,14 @@ WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
 
-src_configure() {
-	XORG_CONFIGURE_OPTIONS=(
-		
-	)
+pkg_setup() {
 	append-ldflags -Wl,-z,lazy
-	eautoreconf || die
-	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
+src_prepare() {
+	eautoreconf || die
+	default
+}
+
 
 src_install() {
 	default

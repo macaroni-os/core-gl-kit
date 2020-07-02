@@ -35,21 +35,23 @@ WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
 
+pkg_setup() {
+	append-ldflags -Wl,-z,lazy
+}
+src_prepare() {
+	python_fix_shebang scripts
+	
+}
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable xspice)
 
 	)
-	append-ldflags -Wl,-z,lazy
-	eautoreconf || die
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
+
 
 src_install() {
 	default
 	find "${D}" -type f -name '*.la' -delete || die
-}
-src_prepare() {
-	python_fix_shebang scripts
-	
 }
