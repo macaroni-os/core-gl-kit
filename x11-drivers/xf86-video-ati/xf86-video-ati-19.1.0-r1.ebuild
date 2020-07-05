@@ -13,6 +13,7 @@ S="$WORKDIR/${PN}-${P}"
 
 DEPEND="sys-kernel/linux-headers
 	x11-base/xorg-proto
+	x11-base/xorg-server
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
