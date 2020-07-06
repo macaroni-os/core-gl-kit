@@ -104,9 +104,8 @@ PDEPEND="
 					) )
 	video_cards_vmware?        ( >=x11-drivers/xf86-video-vmware-13.3.0 )
 	video_cards_voodoo?        ( x11-drivers/xf86-video-voodoo )
-    video_cards_gallium-iris?  ( !x11-drivers/xf86-video-intel )
-    video_cards_intel          ( x11-drivers/xf86-video-intel )
-    video_cards_i915?          ( x11-drivers/xf86-video-intel )
+	video_cards_gallium-iris?  ( !x11-drivers/xf86-video-intel )
+	video_cards_i915?          ( x11-drivers/xf86-video-intel )
 	video_cards_i965?          ( >=x11-base/xorg-server-${PV}[glamor] )
 	!x11-drivers/xf86-input-citron
 	!x11-drivers/xf86-video-apm
