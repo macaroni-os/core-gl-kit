@@ -37,9 +37,12 @@ WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
 
 pkg_setup() {
+	python-single-r1_pkg_setup
 	append-ldflags -Wl,-z,lazy
 }
 src_prepare() {
+	eapply_user
+	eautoreconf || die
 	python_fix_shebang scripts
 	
 }

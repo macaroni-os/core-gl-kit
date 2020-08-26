@@ -9,4 +9,4 @@ RDEPEND=x11-base/xorg-proto x11-base/xorg-server >=sys-devel/libtool-2.2.6a sys-
 SLOT=0
 SRC_URI=https://gitlab.freedesktop.org/xorg/driver/xf86-video-qxl/-/archive/xf86-video-qxl-0.1.5/xf86-video-qxl-xf86-video-qxl-0.1.5.tar.bz2 -> xf86-video-qxl-0.1.5-gitlab.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	d93acbd6ef50348b41ff4ead9a020a16	python-utils-r1	8914c9c220fed51dbc06d700c5ce75bc	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=f7af74137390dbcc4783b30354ce2595
+_md5_=1c3e6c7378434771037fc6512422d7bc
