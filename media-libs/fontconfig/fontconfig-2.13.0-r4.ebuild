@@ -1,8 +1,9 @@
-# Distributed under the terms of GNU Public License GPLv2
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-inherit autotools readme.gentoo-r1
+inherit autotools multilib-minimal readme.gentoo-r1 eapi7-ver
 
 DESCRIPTION="A library for configuring and customizing font access"
 HOMEPAGE="https://fontconfig.org/"
@@ -10,16 +11,17 @@ SRC_URI="https://fontconfig.org/release/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="1.0"
-KEYWORDS="*"
+[[ $(ver_cut 3) -ge 90 ]] || \
+KEYWORDS="alpha amd64 ~arm arm64 ~hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc static-libs"
 
 # Purposefully dropped the xml USE flag and libxml2 support.  Expat is the
 # default and used by every distro.  See bug #283191.
-RDEPEND=">=dev-libs/expat-2.1.0-r3
-	>=media-libs/freetype-2.9
-	!elibc_Darwin? ( sys-apps/util-linux )
+RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
+	>=media-libs/freetype-2.9[${MULTILIB_USEDEP}]
+	!elibc_Darwin? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )
 	elibc_Darwin? ( sys-libs/native-uuid )
-	virtual/libintl"
+	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.19.8
@@ -35,6 +37,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-names.patch #650370
 	"${FILESDIR}"/${P}-add-missing-lintl.patch #652674
 )
+
+MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
 
 pkg_setup() {
 	DOC_CONTENTS="Please make fontconfig configuration changes using
@@ -52,7 +56,7 @@ src_prepare() {
 	rm test/out.expected || die #662048
 }
 
-src_configure() {
+multilib_src_configure() {
 	local addfonts
 	# harvest some font locations, such that users can benefit from the
 	# host OS's installed fonts
@@ -86,20 +90,20 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_install() {
+multilib_src_install() {
 	default
 
 	# avoid calling this multiple times, bug #459210
-#	if multilib_is_native_abi; then
+	if multilib_is_native_abi; then
 		# stuff installed from build-dir
 		emake -C doc DESTDIR="${D}" install-man
 
 		insinto /etc/fonts
 		doins fonts.conf
-#	fi
-#}
+	fi
+}
 
-#src_install_all() {
+multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -name "*.la" -delete || die
 
@@ -124,11 +128,11 @@ src_install() {
 	dodir /etc/sandbox.d
 	echo 'SANDBOX_PREDICT="/var/cache/fontconfig"' > "${ED}"/etc/sandbox.d/37fontconfig
 
-#	readme.gentoo_create_doc
+	readme.gentoo_create_doc
 }
 
 pkg_preinst() {
-	Bug #193476
+	# Bug #193476
 	# /etc/fonts/conf.d/ contains symlinks to ../conf.avail/ to include various
 	# config files.  If we install as-is, we'll blow away user settings.
 	ebegin "Syncing fontconfig configuration to system"
@@ -154,11 +158,12 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	if [[ ${ROOT} = / ]]; then
-		pkg_postinst() {
+		multilib_pkg_postinst() {
 			ebegin "Creating global font cache for ${ABI}"
 			"${EPREFIX}"/usr/bin/${CHOST}-fc-cache -srf
 			eend $?
 		}
 
+		multilib_parallel_foreach_abi multilib_pkg_postinst
 	fi
 }
