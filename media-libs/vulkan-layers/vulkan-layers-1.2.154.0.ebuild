@@ -8,7 +8,7 @@ inherit cmake-utils python-any-r1
 
 DESCRIPTION="Vulkan Validation Layers"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-ValidationLayers"
-SRC_URI="https://api.github.com/repos/KhronosGroup/Vulkan-ValidationLayers/tarball/v1.2.161 -> vulkan-layers-1.2.161.tar.gz"
+SRC_URI="https://api.github.com/repos/KhronosGroup/Vulkan-ValidationLayers/tarball/sdk-1.2.154.0 -> vulkan-layers-1.2.154.0.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -28,7 +28,7 @@ DEPEND="${PYTHON_DEPS}
 "
 
 src_unpack() {
-	unpack ${A}
+	unpack "${A}"
 	mv "${WORKDIR}"/KhronosGroup-Vulkan-ValidationLayers-* "${S}" || die
 } 
 
