@@ -23,7 +23,10 @@ DEPEND="
 RDEPEND="
 	${DEPEND}x11-libs/libpciaccess
 	x11-libs/libdrm[libkms,video_cards_vmware]
-media-libs/mesa[video_cards_xa]
+|| (
+  media-libs/mesa[xa]
+  media-libs/mesa[video_cards_xa]
+)
 
 "
 
