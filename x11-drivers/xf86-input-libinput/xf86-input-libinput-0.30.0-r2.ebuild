@@ -42,4 +42,7 @@ src_prepare() {
 src_install() {
 	default
 	find "${D}" -type f -name '*.la' -delete || die
+	# See FL-7952: Make libinput take priority over synaptics.
+	(cd ${D}/usr/share/X11/xorg.conf.d/ && mv 40-libinput.conf 80-libinput.conf) || die
+	
 }
