@@ -6,8 +6,7 @@ MY_PN=SPIRV-Tools
 PYTHON_COMPAT=( python3+ )
 inherit cmake-utils python-any-r1
 
-EGIT_COMMIT="671914c28e8249f0a555726a0f3f38691fe5c1df"
-SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://api.github.com/repos/KhronosGroup/SPIRV-Tools/tarball/v2020.6 -> spirv-tools-2020.6.tar.gz"
 
 DESCRIPTION="Provides an API and commands for processing SPIR-V modules"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-Tools"
@@ -25,7 +24,10 @@ RDEPEND=""
 BDEPEND="${PYTHON_DEPS}
 	${COMMON_DEPEND}"
 
-S="${WORKDIR}"/${MY_PN}-${EGIT_COMMIT}
+src_unpack() {
+	unpack "${A}"
+	mv "${WORKDIR}"/KhronosGroup-SPIRV-Tools-* "${S}" || die
+}
 
 src_configure() {
 	local mycmakeargs=(
