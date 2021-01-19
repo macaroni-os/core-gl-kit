@@ -1,11 +1,11 @@
 DEFINED_PHASES=install unpack
-DEPEND=!app-eselect/eselect-opencl-1.2.0
+DEPEND=!<app-eselect/eselect-opencl-1.2.0
 DESCRIPTION=Unified C language headers for the OpenCL API
 EAPI=7
 HOMEPAGE=https://github.com/KhronosGroup/OpenCL-Headers
 KEYWORDS=*
 LICENSE=Apache-2.0
-RDEPEND=!app-eselect/eselect-opencl-1.2.0
+RDEPEND=!<app-eselect/eselect-opencl-1.2.0
 SLOT=0
 SRC_URI=https://api.github.com/repos/KhronosGroup/OpenCL-Headers/tarball/v2020.06.16 -> opencl-headers-20200616.tar.gz
-_md5_=19e37db5179219d601a47ead4671ea90
+_md5_=7cba421d2b10d17b92b1da586dac63ad
