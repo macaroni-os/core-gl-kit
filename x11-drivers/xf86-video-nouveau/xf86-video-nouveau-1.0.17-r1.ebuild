@@ -7,7 +7,7 @@ inherit autotools linux-info flag-o-matic
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
 IUSE=" "
-SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau/-/archive/xf86-video-nouveau-1.0.16/xf86-video-nouveau-xf86-video-nouveau-1.0.16.tar.bz2 -> xf86-video-nouveau-1.0.16-gitlab.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau/-/archive/xf86-video-nouveau-1.0.17/xf86-video-nouveau-xf86-video-nouveau-1.0.17.tar.bz2 -> xf86-video-nouveau-1.0.17-gitlab.tar.bz2"
 SLOT="0"
 S="$WORKDIR/${PN}-${P}"
 
