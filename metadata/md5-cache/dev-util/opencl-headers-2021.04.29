@@ -7,5 +7,5 @@ KEYWORDS=*
 LICENSE=Apache-2.0
 RDEPEND=!<app-eselect/eselect-opencl-1.2.0
 SLOT=0
-SRC_URI=https://api.github.com/repos/KhronosGroup/OpenCL-Headers/tarball/refs/tags/v2020.12.18 -> opencl-headers-2020.12.18.tar.gz
-_md5_=a750df055a9af288ef69ac5914751238
+SRC_URI=https://api.github.com/repos/KhronosGroup/OpenCL-Headers/tarball/refs/tags/v2021.04.29 -> opencl-headers-2021.04.29.tar.gz
+_md5_=0a4cf481ef4ac23bd717cb2097403e88
