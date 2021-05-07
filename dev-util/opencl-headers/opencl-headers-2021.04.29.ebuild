@@ -8,7 +8,7 @@ SRC_URI="https://api.github.com/repos/KhronosGroup/OpenCL-Headers/tarball/refs/t
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="*"
+KEYWORDS=""
 
 # To avoid file collisions in /usr/include/CL/
 DEPEND="!<app-eselect/eselect-opencl-1.2.0"
