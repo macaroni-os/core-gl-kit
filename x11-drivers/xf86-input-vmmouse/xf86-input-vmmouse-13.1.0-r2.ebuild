@@ -1,7 +1,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit autotools linux-info flag-o-matic udev
 
 DESCRIPTION="Driver for xorg-server"
