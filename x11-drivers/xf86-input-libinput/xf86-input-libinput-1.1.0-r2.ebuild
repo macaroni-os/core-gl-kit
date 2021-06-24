@@ -6,7 +6,7 @@ inherit autotools linux-info flag-o-matic
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
 IUSE=" "
-SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput/-/archive/xf86-input-libinput-1.0.1/xf86-input-libinput-xf86-input-libinput-1.0.1.tar.bz2 -> xf86-input-libinput-1.0.1-gitlab.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput/-/archive/xf86-input-libinput-1.1.0/xf86-input-libinput-xf86-input-libinput-1.1.0.tar.bz2 -> xf86-input-libinput-1.1.0-gitlab.tar.bz2"
 SLOT="0"
 S="$WORKDIR/${PN}-${P}"
 
