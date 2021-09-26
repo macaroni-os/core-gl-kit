@@ -35,8 +35,11 @@ pkg_setup() {
 	append-ldflags -Wl,-z,lazy
 }
 src_prepare() {
+	# gcc-10 fix:
+	sed -i -e 's/^miPointerSpriteFuncRec/extern miPointerSpriteFuncRec/' ${S}/src/drmmode_display.h || die
 	eautoreconf || die
 	default
+	
 }
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
