@@ -4,7 +4,7 @@ DEPEND=media-libs/libglvnd[X] dev-libs/openssl:0= >=x11-apps/iceauth-1.0.2 >=x11
 DESCRIPTION=X.Org X servers
 EAPI=7
 HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/xserver/xorg-server
-IUSE=dmx kdrive xephyr xnest xorg xvfb debug +elogind minimal selinux suid systemd test +udev unwind xcsecurity static-libs
+IUSE=dmx kdrive xephyr xnest xorg xvfb debug +elogind minimal selinux +suid systemd test +udev unwind xcsecurity static-libs
 KEYWORDS=*
 LICENSE=MIT
 PDEPEND=xorg? ( >=x11-base/xorg-drivers-1.20 )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0/1.20.10
 SRC_URI=https://www.x.org/releases/individual/xserver/xorg-server-1.20.10.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xorg-3	9ac2b7a3cc6952c4f23a29369febbba1
-_md5_=efa33a91ab999bdcb8eee9075d557503
+_md5_=6a2a8dd6b16db655de77e84ccc22bd50
