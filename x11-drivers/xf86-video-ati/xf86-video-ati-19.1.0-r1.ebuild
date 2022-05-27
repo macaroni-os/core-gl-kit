@@ -21,7 +21,7 @@ DEPEND="sys-kernel/linux-headers
 RDEPEND="
 	${DEPEND}x11-libs/libpciaccess
 	x11-libs/libdrm[video_cards_radeon]
-glamor? ( x11-base/xorg-server[glamor] )
+x11-base/xorg-server[glamor(+),-minimal]
 udev? ( virtual/libudev:= )
 
 "
@@ -42,7 +42,7 @@ src_prepare() {
 }
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
-		$(use_enable glamor)
+		--enable-glamor
 $(use_enable udev)
 
 	)
