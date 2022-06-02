@@ -16,10 +16,11 @@ KEYWORDS="*"
 IUSE="wayland X"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
-DEPEND="${PYTHON_DEPS}
-	>=dev-util/glslang-10.11.0.0_pre20200924:=
-	>=dev-util/spirv-tools-2020.5_pre20201107:=
-	>=dev-util/vulkan-headers-$(ver_cut 1-3)
+DEPEND="
+	=dev-util/glslang-1.3.211.0_p20220406*
+	=dev-util/spirv-tools-2022.2_p20220510*
+	=dev-util/vulkan-headers-1.3.215*
+	${PYTHON_DEPS}
 	dev-cpp/robin-hood-hashing
 	wayland? ( dev-libs/wayland:= )
 	X? (
@@ -27,6 +28,10 @@ DEPEND="${PYTHON_DEPS}
 		x11-libs/libXrandr:=
 	)
 "
+
+post_src_unpack() {
+	mv "${WORKDIR}"/KhronosGroup-Vulkan-ValidationLayers-* "${S}" || die
+}
 
 post_src_prepare() {
 	# FL-9238: dealing with an upstream change where the link was to the wrong dir. This probably won't be needed forever:
@@ -37,11 +42,6 @@ post_src_prepare() {
 	"${S}"/layers/CMakeLists.txt || ewarn "The fix for FL-9238 can likely be removed from the vulkan-layers autogen now."
 	return 0
 }
-
-src_unpack() {
-	unpack "${A}"
-	mv "${WORKDIR}"/KhronosGroup-Vulkan-ValidationLayers-* "${S}" || die
-} 
 
 src_configure() {
 	local mycmakeargs=(

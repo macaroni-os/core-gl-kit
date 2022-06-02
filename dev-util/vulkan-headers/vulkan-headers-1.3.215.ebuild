@@ -14,7 +14,6 @@ KEYWORDS="*"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
 
-src_unpack() {
-	unpack "${A}"
+post_src_unpack() {
 	mv "${WORKDIR}"/KhronosGroup-Vulkan-Headers-* "${S}" || die
 }
