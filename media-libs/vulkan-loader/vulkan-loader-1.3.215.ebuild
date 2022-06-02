@@ -17,18 +17,18 @@ KEYWORDS="*"
 IUSE="layers wayland X"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
-DEPEND="${PYTHON_DEPS}
-	=dev-util/vulkan-headers-$(ver_cut 1-3)*
+DEPEND="
+	=dev-util/vulkan-headers-1.3.215*
+	${PYTHON_DEPS}
 	wayland? ( dev-libs/wayland:= )
 	X? (
 		x11-libs/libX11:=
 		x11-libs/libXrandr:=
 	)
 "
-PDEPEND="layers? ( media-libs/vulkan-layers:= )"
+PDEPEND="layers? ( =media-libs/vulkan-layers-1.3.215*:= )"
 
-src_unpack() {
-	unpack ${A}
+post_src_unpack() {
 	mv "${WORKDIR}"/KhronosGroup-Vulkan-Loader-* ${S} || die
 }
 
