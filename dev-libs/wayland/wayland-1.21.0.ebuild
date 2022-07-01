@@ -6,7 +6,7 @@ inherit meson
 
 DESCRIPTION="Wayland protocol libraries"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/wayland"
-SRC_URI="https://gitlab.freedesktop.org/wayland/wayland/-/archive/1.20.0/wayland-1.20.0.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/wayland/wayland/-/archive/1.21.0/wayland-1.21.0.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
