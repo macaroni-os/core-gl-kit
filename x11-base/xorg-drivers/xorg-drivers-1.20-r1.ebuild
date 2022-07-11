@@ -14,7 +14,6 @@ IUSE_INPUT_DEVICES="
 	input_devices_elographics
 	input_devices_evdev
 	input_devices_joystick
-	input_devices_keyboard
 	input_devices_libinput
 	input_devices_mouse
 	input_devices_tslib
@@ -62,7 +61,6 @@ PDEPEND="
 	input_devices_elographics? ( x11-drivers/xf86-input-elographics )
 	input_devices_evdev?       ( >=x11-drivers/xf86-input-evdev-2.10.6 )
 	input_devices_joystick?    ( >=x11-drivers/xf86-input-joystick-1.6.3 )
-	input_devices_keyboard?    ( x11-drivers/xf86-input-keyboard )
 	input_devices_libinput?    ( >=x11-drivers/xf86-input-libinput-0.27.1 )
 	input_devices_mouse?       ( >=x11-drivers/xf86-input-mouse-1.9.3 )
 	input_devices_tslib?       ( x11-drivers/xf86-input-tslib )
@@ -136,4 +134,10 @@ PDEPEND="
 	!x11-drivers/xf86-video-trident
 	!x11-drivers/xf86-video-tseng
 	!<x11-drivers/xf86-input-evdev-2.10.4
+"
+
+# This is no longer a Linux-based keyboard driver:
+
+RDEPEND="
+	!x11-drivers/xf86-input-keyboard
 "
