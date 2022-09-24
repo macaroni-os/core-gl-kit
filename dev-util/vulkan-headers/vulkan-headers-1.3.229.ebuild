@@ -6,7 +6,7 @@ inherit cmake-utils
 
 DESCRIPTION="Vulkan Header files and API registry"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Headers"
-SRC_URI="https://github.com/KhronosGroup/Vulkan-Headers/tarball/5177b119bbdf463b7b909855a83230253c2d8b68 -> Vulkan-Headers-1.3.228-5177b11.tar.gz"
+SRC_URI="https://github.com/KhronosGroup/Vulkan-Headers/tarball/39bcdfe388a5a88d34a941a9f75b2fd576da92cc -> Vulkan-Headers-1.3.229-39bcdfe.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
