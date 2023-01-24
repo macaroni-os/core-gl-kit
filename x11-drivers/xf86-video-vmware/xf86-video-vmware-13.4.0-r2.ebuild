@@ -6,7 +6,7 @@ inherit autotools linux-info flag-o-matic
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
 IUSE=" "
-SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware/-/archive/xf86-video-vmware-13.3.0/xf86-video-vmware-xf86-video-vmware-13.3.0.tar.bz2 -> xf86-video-vmware-13.3.0-gitlab.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware/-/archive/xf86-video-vmware-13.4.0/xf86-video-vmware-xf86-video-vmware-13.4.0.tar.bz2 -> xf86-video-vmware-13.4.0-gitlab.tar.bz2"
 SLOT="0"
 S="$WORKDIR/${PN}-${P}"
 PATCHES=(
