@@ -7,10 +7,10 @@ inherit meson
 DESCRIPTION="X.Org combined protocol headers"
 HOMEPAGE="https://cgit.freedesktop.org/xorg/proto/xorgproto/"
 
-GITHUB_REPO="xorg-xorgproto"
-GITHUB_USER="freedesktop"
-GITHUB_TAG="f61f9a3ee1aa77ebcc67730cda9bfde88e4e9c5f"
-SRC_URI="https://www.github.com/freedesktop/xorg-xorgproto/tarball/f61f9a3ee1aa77ebcc67730cda9bfde88e4e9c5f -> xorg-proto-f61f9a3ee1aa77ebcc67730cda9bfde88e4e9c5f.tar.gz"
+GITHUB_REPO=""
+GITHUB_USER=""
+GITHUB_TAG=""
+SRC_URI="https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/archive/f61f9a3ee1aa77ebcc67730cda9bfde88e4e9c5f/xorgproto-f61f9a3ee1aa77ebcc67730cda9bfde88e4e9c5f.tar.gz -> xorg-proto-2019.2.tar.gz"
 KEYWORDS="*"
 
 src_unpack() {
