@@ -1,48 +1,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit meson
 
 DESCRIPTION="X.Org combined protocol headers"
 HOMEPAGE="https://cgit.freedesktop.org/xorg/proto/xorgproto/"
-
-GITHUB_REPO=""
-GITHUB_USER=""
-GITHUB_TAG=""
 SRC_URI="https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/archive/af9b5f43439378efd1e12d11d487a71f42790fec/xorgproto-af9b5f43439378efd1e12d11d487a71f42790fec.tar.gz -> xorg-proto-af9b5f43439378efd1e12d11d487a71f42790fec.tar.gz"
 KEYWORDS="*"
 
-src_unpack() {
-	unpack ${A}
-	mv "${WORKDIR}/${GITHUB_USER}-${GITHUB_REPO}"-??????? "${S}" || die
-}
-
 LICENSE="GPL-2 MIT"
 SLOT="0"
-
-src_configure() {
-	local emesonargs=(
-		--datadir="${EPREFIX}/usr/share"
-		-Dlegacy=false
-	)
-	meson_src_configure
-}
-
-src_compile() {
-	meson_src_compile
-}
-
-src_install() {
-	meson_src_install
-	DOCS=(
-		AUTHORS
-		PM_spec
-		$(set +f; echo COPYING-*)
-		$(set +f; echo *.txt | grep -v meson.txt)
-	)
-	einstalldocs
-}
 
 RDEPEND="
     =x11-proto/applewmproto-1.4.2*:0/stub
@@ -82,3 +50,32 @@ RDEPEND="
     =x11-proto/xineramaproto-1.2.1*:0/stub
     =x11-proto/xproto-7.0.32*:0/stub
     =x11-proto/xproxymngproto-1.0.3*:0/stub"
+
+post_src_unpack() {
+	if [ ! -d "${S}" ]; then
+		mv xorgproto-af9b5f43439378efd1e12d11d487a71f42790fec "${S}" || die
+	fi
+}
+
+src_configure() {
+	local emesonargs=(
+		--datadir="${EPREFIX}/usr/share"
+		-Dlegacy=false
+	)
+	meson_src_configure
+}
+
+src_compile() {
+	meson_src_compile
+}
+
+src_install() {
+	meson_src_install
+	DOCS=(
+		AUTHORS
+		PM_spec
+		$(set +f; echo COPYING-*)
+		$(set +f; echo *.txt | grep -v meson.txt)
+	)
+	einstalldocs
+}
