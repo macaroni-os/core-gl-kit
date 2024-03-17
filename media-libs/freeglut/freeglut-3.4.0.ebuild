@@ -7,12 +7,13 @@ inherit cmake
 
 DESCRIPTION="A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library"
 HOMEPAGE="http://freeglut.sourceforge.net/"
-SRC_URI="https://github.com/FreeGLUTProject/freeglut/tarball/63c0e78d84ecbfcf8accd8bac04404427899053b -> freeglut-3.4.0-63c0e78.tar.gz"
+SRC_URI="https://github.com/freeglut/freeglut/tarball/63c0e78d84ecbfcf8accd8bac04404427899053b -> freeglut-3.4.0-63c0e78.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="*"
 IUSE="debug static-libs"
+S="${WORKDIR}/freeglut-freeglut-63c0e78"
 
 # enabling GLES support seems to cause build failures
 RDEPEND=">=virtual/glu-9.0-r1
@@ -25,10 +26,6 @@ RDEPEND=">=virtual/glu-9.0-r1
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
-
-post_src_unpack() {
-	mv ${WORKDIR}/FreeGLUTProject-freeglut-* "${S}" || die
-}
 
 src_configure() {
 	local mycmakeargs=(
