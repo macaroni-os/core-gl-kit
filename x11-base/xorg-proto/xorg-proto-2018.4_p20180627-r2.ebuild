@@ -52,8 +52,16 @@ RDEPEND="
     =x11-proto/xproxymngproto-1.0.3*:0/stub"
 
 post_src_unpack() {
+	shadir="${WORKDIR}"/xorgproto-af9b5f43439378efd1e12d11d487a71f42790fec
+	shortdir="${WORKDIR}"/xorgproto-2018.4_p20180627
+
 	if [ ! -d "${S}" ]; then
-		mv xorgproto-af9b5f43439378efd1e12d11d487a71f42790fec "${S}" || die
+		if [ -d "${shadir}" ]; then
+			mv "${shadir}" "${S}" || die
+		else if [ -d "${shortdir}" ]; then
+			mv "${shortdir}" "${S}" || die
+		fi
+		fi
 	fi
 }
 
