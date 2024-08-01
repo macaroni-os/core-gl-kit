@@ -105,7 +105,7 @@ EGO_SUM=(
 go-module_set_globals
 
 SRC_URI="https://github.com/NVIDIA/nvidia-container-toolkit/tarball/a470818ba7d9166be282cd0039dd2fc9b0a34d73 -> nvidia-container-toolkit-1.16.1-a470818.tar.gz
-https://direct.funtoo.org/f9/19/41/f919418ea75c4220ebc92d7b4e61f0a9a804d35bdfe9adcc091b075b3440fda45cb2ac330e786621dd351d5356b7a3fad8497de5616bc11f8c276245ee82a609 -> nvidia-container-toolkit-1.16.1-funtoo-go-bundle-0d63f7bb11f273d6506985458ced8f2b664be2b538fdc85b0ddeda00e2906859ce02d3033a7b0decc5c77de8b87a75589141d8fe4d2ccace44f67d7f985867df.tar.gz"
+https://distfiles.macaronios.org/e2/1a/7d/e21a7d1ed8dd8235cd574a9b3ed53875471d1006ce11886afdb4a65ede7e428537fa246d04bb0bfb18f68042d72ef97b091db7a853aa172c79058e425998341e -> nvidia-container-toolkit-1.16.1-funtoo-go-bundle-0d63f7bb11f273d6506985458ced8f2b664be2b538fdc85b0ddeda00e2906859ce02d3033a7b0decc5c77de8b87a75589141d8fe4d2ccace44f67d7f985867df.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
