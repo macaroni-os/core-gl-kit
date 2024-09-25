@@ -8,8 +8,8 @@ DESCRIPTION="NVIDIA container runtime toolkit"
 HOMEPAGE="https://github.com/NVIDIA/nvidia-container-toolkit"
 
 EGO_SUM=(
-	"github.com/!n!v!i!d!i!a/go-nvlib v0.6.0"
-	"github.com/!n!v!i!d!i!a/go-nvlib v0.6.0/go.mod"
+	"github.com/!n!v!i!d!i!a/go-nvlib v0.6.1"
+	"github.com/!n!v!i!d!i!a/go-nvlib v0.6.1/go.mod"
 	"github.com/!n!v!i!d!i!a/go-nvml v0.12.4-0"
 	"github.com/!n!v!i!d!i!a/go-nvml v0.12.4-0/go.mod"
 	"github.com/blang/semver/v4 v4.0.0"
@@ -68,8 +68,8 @@ EGO_SUM=(
 	"github.com/syndtr/gocapability v0.0.0-20200815063812-42c35b437635"
 	"github.com/syndtr/gocapability v0.0.0-20200815063812-42c35b437635/go.mod"
 	"github.com/urfave/cli v1.19.1/go.mod"
-	"github.com/urfave/cli/v2 v2.27.2"
-	"github.com/urfave/cli/v2 v2.27.2/go.mod"
+	"github.com/urfave/cli/v2 v2.27.4"
+	"github.com/urfave/cli/v2 v2.27.4/go.mod"
 	"github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f/go.mod"
 	"github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb"
 	"github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb/go.mod"
@@ -79,13 +79,13 @@ EGO_SUM=(
 	"github.com/xeipuuv/gojsonschema v1.2.0/go.mod"
 	"github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1"
 	"github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1/go.mod"
-	"golang.org/x/mod v0.19.0"
-	"golang.org/x/mod v0.19.0/go.mod"
+	"golang.org/x/mod v0.20.0"
+	"golang.org/x/mod v0.20.0/go.mod"
 	"golang.org/x/sys v0.0.0-20191026070338-33540a1f6037/go.mod"
 	"golang.org/x/sys v0.0.0-20191115151921-52ab43148777/go.mod"
 	"golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8/go.mod"
-	"golang.org/x/sys v0.22.0"
-	"golang.org/x/sys v0.22.0/go.mod"
+	"golang.org/x/sys v0.24.0"
+	"golang.org/x/sys v0.24.0/go.mod"
 	"gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod"
 	"gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c"
 	"gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c/go.mod"
@@ -104,14 +104,14 @@ EGO_SUM=(
 
 go-module_set_globals
 
-SRC_URI="https://github.com/NVIDIA/nvidia-container-toolkit/tarball/a470818ba7d9166be282cd0039dd2fc9b0a34d73 -> nvidia-container-toolkit-1.16.1-a470818.tar.gz
-https://distfiles.macaronios.org/7a/3b/32/7a3b327122cc449f37bdffc366085a34392425ca7b2f380cd124ecd7e2b25b86e754d0a24b93d705374e4c3d4f3a27a357977e1246707b4c92b36e61d84ebddf -> nvidia-container-toolkit-1.16.1-funtoo-go-bundle-0d63f7bb11f273d6506985458ced8f2b664be2b538fdc85b0ddeda00e2906859ce02d3033a7b0decc5c77de8b87a75589141d8fe4d2ccace44f67d7f985867df.tar.gz"
+SRC_URI="https://github.com/NVIDIA/nvidia-container-toolkit/tarball/a5a5833c14a15fd9c86bcece85d5ec6621b65652 -> nvidia-container-toolkit-1.16.2-a5a5833.tar.gz
+https://distfiles.macaronios.org/f8/9e/b4/f89eb4a50ef9b80737ac8dd6069b8850181023deb5b8e3ebb10b2d2c6d27a8e204072abc1ffa9a1a55858b57df1150ce68225d00361ad684c73e18e7c68c94aa -> nvidia-container-toolkit-1.16.2-funtoo-go-bundle-b7e792f2142ace8ac7a155e1b4d859bc32e0619fdeffb549a26d7cb9e081e8eaed828c62f07c1e6b4063b118a50ca2ab83f97941c8f3c3542128a101b82453a3.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="*"
 IUSE=""
-S="${WORKDIR}/NVIDIA-nvidia-container-toolkit-a470818"
+S="${WORKDIR}/NVIDIA-nvidia-container-toolkit-a5a5833"
 
 RDEPEND="app-emulation/libnvidia-container"
 
