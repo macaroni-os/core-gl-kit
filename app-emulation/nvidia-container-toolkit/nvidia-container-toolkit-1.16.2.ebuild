@@ -105,7 +105,7 @@ EGO_SUM=(
 go-module_set_globals
 
 SRC_URI="https://github.com/NVIDIA/nvidia-container-toolkit/tarball/a5a5833c14a15fd9c86bcece85d5ec6621b65652 -> nvidia-container-toolkit-1.16.2-a5a5833.tar.gz
-https://distfiles.macaronios.org/f8/9e/b4/f89eb4a50ef9b80737ac8dd6069b8850181023deb5b8e3ebb10b2d2c6d27a8e204072abc1ffa9a1a55858b57df1150ce68225d00361ad684c73e18e7c68c94aa -> nvidia-container-toolkit-1.16.2-funtoo-go-bundle-b7e792f2142ace8ac7a155e1b4d859bc32e0619fdeffb549a26d7cb9e081e8eaed828c62f07c1e6b4063b118a50ca2ab83f97941c8f3c3542128a101b82453a3.tar.gz"
+https://distfiles.macaronios.org/88/62/90/886290803ba0ddb4efc1665b5e0c2792c44a7d2e8b5240a1c2498fc474fbdf1c29866650780792da1e2c9b0533ccceb4d4f7305ffd7d11092ed692d56d55b51d -> nvidia-container-toolkit-1.16.2-funtoo-go-bundle-b7e792f2142ace8ac7a155e1b4d859bc32e0619fdeffb549a26d7cb9e081e8eaed828c62f07c1e6b4063b118a50ca2ab83f97941c8f3c3542128a101b82453a3.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
