@@ -7,7 +7,7 @@ inherit meson
 DESCRIPTION="Compatibility X server to run under Wayland"
 HOMEPAGE="https://wayland.freedesktop.org/xserver.html"
 # SRC_URI="https://www.x.org/releases/individual/xserver/${P}.tar.xz"
-SRC_URI="https://www.x.org/releases/individual/xserver/xwayland-24.1.2.tar.xz -> xwayland-24.1.2.tar.xz
+SRC_URI="https://www.x.org/releases/individual/xserver/xwayland-24.1.3.tar.xz -> xwayland-24.1.3.tar.xz
 "
 
 LICENSE="MIT"
