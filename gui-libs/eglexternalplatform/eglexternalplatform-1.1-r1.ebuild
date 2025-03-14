@@ -10,6 +10,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="*"
 
+src_prepare() {
+	default
+
+	use !prefix || sed -i "/^inc/s|=|=${EPREFIX}|" eglexternalplatform.pc || die
+}
+
 src_install() {
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins eglexternalplatform.pc
