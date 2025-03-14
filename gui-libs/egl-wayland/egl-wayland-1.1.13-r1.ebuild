@@ -6,9 +6,7 @@ inherit meson
 
 DESCRIPTION="EGLStream-based Wayland external platform"
 HOMEPAGE="https://github.com/NVIDIA/egl-wayland/"
-SRC_URI="
-	https://github.com/NVIDIA/egl-wayland/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-"
+SRC_URI="https://github.com/NVIDIA/egl-wayland/tarball/69ae9cf07bbec3b00a682918bf0dc845e9896771 -> egl-wayland-1.1.13-69ae9cf.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,9 +21,16 @@ DEPEND="
 	${RDEPEND}
 	dev-libs/wayland-protocols
 	gui-libs/eglexternalplatform
-	>=media-libs/libglvnd-1.3.4
+	media-libs/libglvnd
 "
 BDEPEND="dev-util/wayland-scanner"
+PATCHES=(
+	"${FILESDIR}"/"${PN}-1.1.6-remove-werror.patch"
+)
+
+post_src_unpack() {
+	mv NVIDIA-${PN}-* "${S}"
+}
 
 src_install() {
 	meson_src_install
