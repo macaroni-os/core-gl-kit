@@ -95,6 +95,7 @@ RDEPEND="dev-libs/expat
 	vulkan? (
 	  dev-util/glslang
 	  >=dev-util/spirv-tools-1.4.328.1
+	  dev-util/spirv-llvm-translator
 	)
 	video_cards_r300? (
 	  x11-libs/libdrm[video_cards_radeon]
