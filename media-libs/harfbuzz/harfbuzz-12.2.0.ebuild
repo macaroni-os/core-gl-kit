@@ -15,7 +15,6 @@ IUSE="+cairo debug experimental +glib +graphite icu +introspection +truetype"
 REQUIRED_USE="introspection?  ( glib )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
-	introspection? ( dev-util/glib-utils )
 	
 "
 RDEPEND="cairo? ( x11-libs/cairo )
