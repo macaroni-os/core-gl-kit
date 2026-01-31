@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3+ )
-inherit python-single-r1 systemd
+inherit meson python-single-r1 systemd
 
 DESCRIPTION="D-Bus service to check the availability of dual-GPU"
 HOMEPAGE="https://gitlab.freedesktop.org/hadess/switcheroo-control/"
