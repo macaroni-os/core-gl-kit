@@ -12,7 +12,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="*"
 IUSE="cpu_flags_x86_sse2 d3d9 debug +egl +gbm gles1 +gles2 +glvnd +llvm
-lm_sensors opencl unwind vaapi valgrind vdpau vulkan
+lm_sensors opencl unwind vaapi valgrind vulkan
 vulkan-overlay wayland +X xa zink +zstd llvm_targets_AMDGPU
 "
 IUSE+="
@@ -76,7 +76,6 @@ RDEPEND="dev-libs/expat
 	vaapi? (
 	  x11-libs/libva:=
 	)
-	vdpau? ( x11-libs/libvdpau:= )
 	wayland? (
 	  dev-libs/wayland:=
 	)
@@ -146,15 +145,7 @@ src_configure() {
 	else
 	  emesonargs+=(-Dgallium-va=disabled)
 	fi
-	 if use video_cards_r300 ||
-	   use video_cards_r600 ||
-	   use video_cards_radeonsi ||
-	   use video_cards_nouveau; then
-	  emesonargs+=($(meson_feature vdpau gallium-vdpau))
-	else
-	  emesonargs+=(-Dgallium-vdpau=disabled)
-	fi
-	 gallium_enable !llvm softpipe
+	gallium_enable !llvm softpipe
 	gallium_enable llvm llvmpipe
 	gallium_enable video_cards_freedreno freedreno
 	gallium_enable video_cards_intel crocus i915 iris
