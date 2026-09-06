@@ -25,15 +25,16 @@ BDEPEND="clang? (
 	
 "
 S="${WORKDIR}"
+
 pkg_setup() {
 	if use amd64; then
-	  narch=x86_64
+		narch=x86_64
 	else
-	  if use arm64; then
-	    narch=sbsa
-	  else
-	    die "unknown arch ${ARCH}"
-	  fi
+		if use arm64; then
+			narch=sbsa
+		else
+			die "unknown arch ${ARCH}"
+		fi
 	fi
 	export narch
 }
@@ -46,64 +47,76 @@ src_compile() {
 src_install() {
 	local target_path=/opt/${PN}
 	local dirs=(
-	  cuda_cccl
-	  cuda_crt
-	  cuda_cudart
-	  cuda_cuxxfilt
-	  cuda_nvcc
-	  cuda_nvml_dev
-	  cuda_nvrtc
-	  cuda_nvtx
-	  cuda_opencl
-	  cuda_profiler_api
-	  cuda_sandbox_dev
-	  libcublas
-	  libcufft
-	  libcufile
-	  libcuobjclient
-	  libcurand
-	  libcusolver
-	  libcusparse
-	  libnpp
-	  libnvfatbin
-	  libnvjitlink
-	  libnvjpeg
-	  libnvptxcompiler
-	  libnvvm
+		cuda_cccl
+		cuda_cudart
+		cuda_cuxxfilt
+		cuda_nvcc
+		cuda_nvml_dev
+		cuda_nvrtc
+		cuda_nvtx
+		cuda_profiler_api
+		libcublas
+		libcufft
+		libcufile
+		libcurand
+		libcusolver
+		libcusparse
+		libnpp
+		libnvjpeg
 	)
-	 dodir "${target_path}/lib"
+
+	dodir "${target_path}/lib"
 	dodir "${target_path}/include"
 	dosym "${target_path}/lib" "${target_path}/lib64"
-	 for d in ${dirs[@]}; do
-	  insinto "${target_path}/"
-	   if [ "${d}" = "libnvvm" ] ; then
-	    cd ${WORKDIR}/builds/${d}/
-	    doins -r nvvm/
-	  else
-	    cd ${WORKDIR}/builds/${d}/targets/${narch}-linux/
-	    doins -r include/
-	    if [ -d ${WORKDIR}/builds/${d}/targets/${narch}-linux/lib/ ] ; then
-	      doins -r lib/
-	    fi
-	    if [ -d ${WORKDIR}/builds/${d}/bin/ ] ; then
-	      cd ${WORKDIR}/builds/${d}/
-	      doins -r bin/
-	    fi
-	  fi
-	 done
-	 # Fix exec permissions
-	chmod a+x "${D}/${target_path}/bin/*
-	chmod a+x "${D}/${target_path}/nvvm/bin/cicc
-	 # Remove broken links
-	rm "${D}/${target_path}/lib/lib64
-	rm "${D}/${target_path}/include/include
-	 newenvd "${FILESDIR}"/99cuda.envd 99cuda
+
+	for d in ${dirs[@]}; do
+		insinto "${target_path}/"
+		if [ "${d}" = "cuda_nvcc" ] ; then
+			cd ${WORKDIR}/builds/${d}/
+			doins -r nvvm/
+			if [ -d ${WORKDIR}/builds/${d}/bin/ ] ; then
+				cd ${WORKDIR}/builds/${d}/
+				doins -r bin/
+			fi
+			if [ -d ${WORKDIR}/builds/${d}/targets/${narch}-linux/ ] ; then
+				cd ${WORKDIR}/builds/${d}/targets/${narch}-linux/
+				doins -r include/
+				if [ -d ${WORKDIR}/builds/${d}/targets/${narch}-linux/lib/ ] ; then
+					doins -r lib/
+				fi
+			fi
+		else
+			if [ -d ${WORKDIR}/builds/${d}/targets/${narch}-linux/ ] ; then
+				cd ${WORKDIR}/builds/${d}/targets/${narch}-linux/
+				doins -r include/
+				if [ -d ${WORKDIR}/builds/${d}/targets/${narch}-linux/lib/ ] ; then
+					doins -r lib/
+				fi
+			fi
+			if [ -d ${WORKDIR}/builds/${d}/bin/ ] ; then
+				cd ${WORKDIR}/builds/${d}/
+				doins -r bin/
+			fi
+		fi
+
+	done
+
+	# Fix exec permissions
+	chmod a+x "${D}"/${target_path}/bin/*
+	chmod a+x "${D}"/${target_path}/nvvm/bin/cicc
+
+	# Remove broken links
+	rm "${D}"/${target_path}/lib/lib64
+	rm "${D}"/${target_path}/include/include
+
+	newenvd "${FILESDIR}"/99cuda.envd 99cuda
 	dodir ${target_path}/pkgconfig
 	insinto ${target_path}/pkgconfig
 	cp "${FILESDIR}"/nvidia-cuda-toolkit.pc .
 	sed -i -e 's|VERSION|11.8.0|g' nvidia-cuda-toolkit.pc
 	doins nvidia-cuda-toolkit.pc
-	 dodir /etc/revdep-rebuild
+
+	dodir /etc/revdep-rebuild
 	insinto /etc/revdep-rebuild
 	newins "${FILESDIR}"/nvidia-cuda-toolkit.revdep 80nvidia-cuda-toolkit
 }
